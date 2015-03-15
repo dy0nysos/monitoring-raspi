@@ -25,13 +25,13 @@ public class Main
     GpioPinDigitalOutput alNOK = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04);
     GpioPinDigitalOutput dyonysosOK = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_05);
     GpioPinDigitalOutput dyonysosNOK = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_06);
-    Serveur al = new Serveur("archoslounge.net", Integer.valueOf(80));
+    Serveur al = new Serveur(urlAl,httpPort);
     al.setEtatOk(alOK);
     al.setEtatNok(alNOK);
-    Serveur dyo = new Serveur("dyonysos.ovh", Integer.valueOf(80));
+    Serveur dyo = new Serveur(urlDyonysos,httpPort);
     dyo.setEtatNok(dyonysosNOK);
     dyo.setEtatOk(dyonysosOK);
-    List<Serveur> lesServeurs = new ArrayList();
+    List<Serveur> lesServeurs = new ArrayList<Serveur>();
     lesServeurs.add(dyo);
     lesServeurs.add(al);
     Moniteur moniteur = new Moniteur();
