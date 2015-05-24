@@ -86,9 +86,19 @@ public class LcdDisplay {
 		LCD_E.setState(false);
 		Thread.sleep(0L,E_DELAY);
 	}
-	
+	public void lcdString(String message) throws InterruptedException{
+		if(message.length()>16){
+			String message1 = message.substring(0, 16);
+			String message2 = message.substring(16, message.length());
+			lcdString(message1, LCD_LINE_1);
+			lcdString(message2, LCD_LINE_2);
+			
+		}else{
+			lcdString(message, LCD_LINE_1);
+		}
+	}
 	public void lcdString(String message, Integer lcdLine) throws InterruptedException{
-		message = StringUtils.rightPad(message, LCD_WIDTH);
+		message = StringUtils.rightPad(message, LCD_WIDTH+1);
 		
 		lcdByte(lcdLine, LCD_CMD);
 		
