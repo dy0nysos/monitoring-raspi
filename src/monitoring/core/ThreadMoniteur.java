@@ -17,6 +17,7 @@ public class ThreadMoniteur
   private Serveur serveur;
   private Socket s;
   private Long delay;
+  private LcdDisplay lcdDislay;
   
   public void run()
   {
